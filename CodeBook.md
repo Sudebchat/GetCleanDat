@@ -50,9 +50,9 @@ The rule here is that no capital letters, no hyphens, no dots, no underscores to
 　　　　colnams  ## column names to be used for mean and std data
 　　　　
 The actual names are listed below with the original feature name listed on the right. 
-　　　　"tbodyaccmeanx"       	## "tBodyAcc-mean()-X"               
-　　　　"tbodyaccmeanY"       	## "tbodyAcc-mean()-y"              
-　　　　"tbodyaccmeanz"       	## "tBodyAcc-mean()-Z"               
+　　　　"tbodyaccmeanx"       	    ## "tBodyAcc-mean()-X"               
+　　　　"tbodyaccmeanY"         	## "tbodyAcc-mean()-y"              
+　　　　"tbodyaccmeanz"         	## "tBodyAcc-mean()-Z"               
 　　　　"tbodyaccstdx"        		## "tBodyAcc-std()-X"               
 　　　　"tbodyaccstdy"        		## "tBodyAcc-std()-Y"                
 　　　　"tbodyaccstdz"        		## "tBodyAcc-std()-Z"               

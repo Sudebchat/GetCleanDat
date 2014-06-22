@@ -10,33 +10,39 @@ The run_analysis.R code does the following :
 PART 1. Merges the training and the test sets to create one data set
 
 (1) First set the home directory
-setwd("./Coursera/DataScienceTrack/GettingAndCleaningData")
+    setwd("./")   ## the working directory is prescribed here
 
-Second read the files containing the data. Here the the subject target file are assumed to be already unzipped from the getdata-projectfiles-UCI HAR Dataset zip file. The following gives the description of the variables used in the R code.     
-　　　　file_tst  ##  test data file name
+(2) Second read the files containing the data. Here the the subject target file are assumed to be already unzipped 
+    from the getdata-projectfiles-UCI HAR Dataset zip file. The following gives the description of the variables 
+    used in the R code.     
+　　　file_tst  ##  test data file name
    	file_trn  ##  the train data file name
-   	fl1trn  ##  the train data
-   	fl1tst  ##  the test data
-(3) Lastly, the train and test data sets are merged into one data set (vector). The variable used in the R code for this is:
-   	fl1merged  ## data after merging the two data sets
+   	fl1trn    ##  the train data
+   	fl1tst    ##  the test data
+
+(3) Lastly, the train and test data sets are merged into one data set (vector). The variable used in the R code 
+    for this is: fl1merged  ## data after merging the two data sets
 
 PART 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
 
 (1) First we read the feature description file. The variables used here are as follows:
 　　　　featurefl ## feature file name
-　　　　feattest ## read the feature names
+　　　　feattest  ## read the feature names
 (2) Next we select the feature names with "mean" and "std" in them. The variables used here are as follows:
 　　　　colindex  ## index for the features with "mean" and "std" in them using grep
-　　　　lenfeat    ## gives the number of features selected
+　　　　lenfeat   ## gives the number of features selected
 
-(3) Next we create a list containing the position of the "features" with "mean"  and "std" in them and sort the data in increasing order and this is kept in the following variable:
+(3) Next we create a list containing the position of the "features" with "mean"  and "std" in them and sort the 
+    data in increasing order and this is kept in the following variable:
 　　　　rnlstdmean ## contains the column positions of the selected features
 
-(4) Next we create the data set with mean and std columns by selecting the elements from the big merged vector of the train and test data set. This data is kept in the following dataset:
+(4) Next we create the data set with mean and std columns by selecting the elements from the big merged vector 
+    of the train and test data set. This data is kept in the following dataset:
 　　　　selectcols  ## the data set with mean and std columns (values)
-　　　　nfeatures  ## the total number of features
-　　　　nrecords  ## the new number of records in training and test data combined
-Next we write the tidy data into an intermediary file named "tidydata" for next processing
+　　　　nfeatures   ## the total number of features
+　　　　nrecords    ## the new number of records in training and test data combined
+
+(5) Next we write the tidy data into an intermediary file named "tidydata" for next processing
 
 PART 3. Using the descriptive activity names to name the activities in the data set. 
 
@@ -148,21 +154,24 @@ PART 5. Creating a second, independent tidy data set with the average of each va
 (1) First get the volunteer id data for test and training records. Here the variables used are:
 　　　　volunidtrn 	## train data (subject_test.txt file)
 　　　　volunidtst 	## test data (subject_test.txt)
-　　　　volunidmerg    ## the merged data for the volunteer id values
+　　　　volunidmerg  ## the merged data for the volunteer id values
 　　　　
 (2) Next creating a matrix of all the feature variables. The name of the matrix is:
 　　　　matmergdat1  ##  Matrix for all feature variables (train and test combined)
-　　　　tidydat3      ##  matmergdt1 combined with activity and subject(volunteer) data
+　　　　tidydat3     ##  matmergdt1 combined with activity and subject(volunteer) data
 
 (3) Next creating a simple 3 column matrix for calculating mean of each feature. The variables used here are:
 　　　　colname4	## The column names here are "feature","activity","subject"
         tidydat4 	## Contains the data for each feature  when calculating the mean
 
-Next prepare the matrix for the final data set for the mean data by feature by subject (vounteer). The name of this matrix is:
-　　　　tidydat2 	## final tidy data set with mean values and column labels 
+(4) Next prepare the matrix for the final data set for the mean data by feature by subject (vounteer). The name of 
+    this matrix is:
+　　　　tidydat2 	## final tidy data set with mean values and column labels
+　　The column names for the file is represented by:
 　　　　colnm 		## column labels for tidydat2
 
-Next for each feature calculate the mean and put it in the final data set. The ddply function of the plyr package is used here to calculate the mean value. The dataset used here is:
- 	tidydat2 	## the final data for writing to a file
+(5) Next for each feature calculate the mean and put it in the final data set. The ddply function of the plyr 
+    package is used here to calculate the mean value. The dataset used here is:
+ 	     tidydat2 	## the final data for writing to a file
 
 (6) And finally the data is written into the tidydata2.txt file in the local c:\temp directory.
